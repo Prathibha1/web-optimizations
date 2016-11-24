@@ -27,9 +27,9 @@ Some useful tips to help you get started:
   ```
 
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-### OPtimizations in first part
+### Optimizations in first part
 
-1.minifying the css files and then inlined the css files in html files.
+1. minifying the css files and then inlined the css files in html files.
 
 2. compressing the images .
 
