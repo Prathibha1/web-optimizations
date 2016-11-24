@@ -27,12 +27,24 @@ Some useful tips to help you get started:
   ```
 
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+### OPtimizations in first part
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+1.minifying the css files and then inlined the css files in html files.
+
+2. compressing the images .
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+
+### optimization in second part:
+1. In main.js file at the pizzaresizing function, we need pullout the rendering lines from the loop.
+
+2. Modified the updatePositions function to select the mover elements by class name.
+
+3. Since there are only 5 unique phases of the moving pizzas, I moved the phase calculation into its own for loop that appends each phase to an array called phaseList, rather than declaring and setting the phase variable each time.
+
+4. The pizza item styles are changed by accessing the relevant element of the phaseList array as it loops through each element in the items array.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
