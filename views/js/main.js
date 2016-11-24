@@ -505,7 +505,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions() {
+/*function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
@@ -513,6 +513,32 @@ function updatePositions() {
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
+
+  // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Super easy to create custom metrics.
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
+}
+*/
+function updatePositions() {
+  frame++;
+  window.performance.mark("mark_start_frame");
+
+  //Changed to select the moving pizzas element by class name, although this may not be supported by older browsers.
+  var items = document.getElementsByClassName('mover');
+  //Moved the phase calculation into its own for loop that appends each phase to an array, rather than declaring and setting the phase variable each time.
+  phaseList = [];
+  for (var j = 0; j < 5; j++){
+    phaseList.push(Math.sin((document.body.scrollTop / 1250) + (j % 5)));
+  }
+  //The pizza item styles are changed by accessing the relevant element of the phaseList array, rather than resuing the phase variable.
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.left = items[i].basicLeft + 100 * phaseList[(i % 5)] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
