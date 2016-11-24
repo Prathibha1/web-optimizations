@@ -447,14 +447,8 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Iterates through pizza elements on the page and changes their widths
- /* function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
-    }
-  }*/
+ 
+  //Iterates throuh pizza elements on the page and changes theirs widths
   function changePizzaSizes(size) {
     var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
     var newwidth = (document.querySelector(".randomPizzaContainer").offsetWidth + dx) + 'px';
@@ -502,8 +496,6 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 }
 //latestKnown scroll position set to 0.
 var latestKnownScrollY = 0;
-// Set ticking to true
-//var ticking = true;
 window.animating = false;
 // Scroll callback utilizing latestKnownScrollY and window event listener
 function onScroll() {
@@ -513,12 +505,7 @@ function onScroll() {
 
 // use requestAnimationFrame only when scrolling
 // used great tips from http://www.html5rocks.com/en/tutorials/speed/animations/
-/*function requestTick() {
-  if (!ticking) {
-    requestAnimationFrame(updatePositions);
-  }
-  ticking = true;
-  }*/
+
 function animationReadyCheck() {
   if(!window.animating) {
     window.animating = true;
